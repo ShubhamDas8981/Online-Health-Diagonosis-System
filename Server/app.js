@@ -8,7 +8,7 @@ const cookieParser = require('cookie-parser'); // Middleware
 const multer = require('multer'); // Middleware for handling multipart/form-data
 const path = require('path'); // Module for file and directory paths
 const { OAuth2Client } = require('google-auth-library');//for google signup
-const client = new OAuth2Client('16702775191-gj2rmp2n57k7c0oi3qrkdjmjldk4eklc.apps.googleusercontent.com');//Your Oauth2.0 client Id
+const client = new OAuth2Client('');//Your Oauth2.0 client Id
 const nodemailer = require('nodemailer');
 const crypto = require('crypto'); // For generating OTP
 // Setup multer for file uploads
@@ -26,33 +26,18 @@ const transporter = nodemailer.createTransport({
     host: 'email-smtp.eu-west-1.amazonaws.com', // Replace with your SES SMTP endpoint email-smtp.ap-south-1.amazonaws.com
     port: 587,
     auth: {
-        user: 'AKIA47CRWFW7GNF22MUR',//YOUR_SES_SMTP_USERNAME AKIA47CRWFW7GNF22MUR
-        pass: 'BL339Z/wgj3XLq8eruawidW2/kL61ijghe7aZAW9mwSl'//YOUR_SES_SMTP_PASSWORD BL339Z/wgj3XLq8eruawidW2/kL61ijghe7aZAW9mwSl
+        user: '',//YOUR_SES_SMTP_USERNAME AKIA47CRWFW7GNF22MUR
+        pass: ''//YOUR_SES_SMTP_PASSWORD BL339Z/wgj3XLq8eruawidW2/kL61ijghe7aZAW9mwSl
     }
 });
 
-// //Set up EMAIL data
-// const mailOptions = {
-//     from: 'noreply.onlinehealthdiagnosis@gmail.com',
-//     to: 'shubhamdas8981@gmail.com',
-//     subject: "Hello from Online Health Diagnosis System",
-//     text: "This is a text email sent from Online Health Diagnosis System. "
-// }
-// //Send the email
-// transporter.sendMail(mailOptions, (error, info) => {
-//     if (error) {
-//         console.log("Error:", error)
-//     } else {
-//         console.log("Email sent: " + info.response);
-//     }
-// })
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use("/uploads", express.static(path.join(__dirname, "uploads"))); // Serve static files from the uploads folder
 
-const JWT_SECRET = 'bharatterabhaihai'; // Use environment variables in production
+const JWT_SECRET = ''; // Use environment variables in production
 let otpStore = {};
 // Admin login route
 app.post('/admin-login', (req, res) => {
@@ -108,7 +93,7 @@ app.post("/google-login", async (req, res) => {
         // Verify the token using the client
         const ticket = await client.verifyIdToken({
             idToken: tokenId,
-            audience: '16702775191-gj2rmp2n57k7c0oi3qrkdjmjldk4eklc.apps.googleusercontent.com' // Replace with your actual client ID
+            audience: '' // Replace with your actual client ID
         });
     
         const { email, name,  picture } = ticket.getPayload();
@@ -171,7 +156,7 @@ app.post("/google-signup", async (req, res) => {
       // Verify the token using the client
       const ticket = await client.verifyIdToken({
         idToken: tokenId,
-        audience: '16702775191-gj2rmp2n57k7c0oi3qrkdjmjldk4eklc.apps.googleusercontent.com' // Replace with your actual client ID
+        audience: '' // Replace with your actual client ID
       });
   
       const { email, name,picture } = ticket.getPayload();
@@ -228,32 +213,7 @@ const authenticateToken = (req, res, next) => {
         return res.status(401).json({ status: "fail", message: "Invalid token" });
     }
 };
-// //add more details
-// app.post("/add-details", authenticateToken, upload.single('profileImage'), async (req, res) => {
-//     const { phone, address } = req.body;
-//     const profileImage = req.file;
 
-//     try {
-//         const user = await collection.findOne({ _id: req.user.id });
-//         if (!user) {
-//             return res.status(404).json({ status: "fail", message: "User not found" });
-//         }
-
-//         // Update user details
-//         user.phone = phone || user.phone;
-//         user.address = address || user.address;
-//         user.state = state || user.state;
-//         if (profileImage) {
-//             user.profileImage = profileImage.path; // Ensure the path is correct
-//         }
-//         await user.save();
-
-//         res.json({ status: "success" });
-//     } catch (error) {
-//         console.error("Error adding details:", error); // Debug log
-//         res.status(500).json({ status: "fail", message: "Error adding details" });
-//     }
-// });
 
 // Send OTP
 app.post("/send-otp", async (req, res) => {
@@ -374,26 +334,6 @@ app.get("/user-details", authenticateToken, async (req, res) => {
     }
 });
 
-// // Add new doctor
-// app.post("/add-doctor", authenticateToken, upload.single('profileImage'), async (req, res) => {
-//     const { name, location, specialization, contact } = req.body;
-//     const profileImage = req.file;
-
-//     const newDoctor = new Doctor({
-//         name,
-//         location,
-//         specialization,
-//         contact,
-//         profileImage: profileImage ? profileImage.path : ""
-//     });
-
-//     try {
-//         await newDoctor.save();
-//         res.status(201).json({ status: "success", doctor: newDoctor });
-//     } catch (error) {
-//         res.status(500).json({ status: "fail", message: "Error adding doctor" });
-//     }
-// });
 
 // Get doctors with filters
 app.get("/doctors", authenticateToken, async (req, res) => {
@@ -414,48 +354,6 @@ app.get("/doctors", authenticateToken, async (req, res) => {
         res.status(500).json({ status: "fail", message: "Error fetching doctors", error: error.message });
     }
 });
-
-// // Insert Sample Doctors
-// app.post("/insert-sample-doctors", async (req, res) => {
-//     const doctors = [
-//         {
-//             name: "Dr. John Doe",
-//             location: "New York",
-//             specialization: "Cardiologist",
-//             contact: "123-456-7890",
-//             profileImage: "" // Add path if you have an image
-//         },
-//         {
-//             name: "Dr. Jane Smith",
-//             location: "Los Angeles",
-//             specialization: "Dermatologist",
-//             contact: "234-567-8901",
-//             profileImage: "" // Add path if you have an image
-//         },
-//         {
-//             name: "Dr. Emily Johnson",
-//             location: "Chicago",
-//             specialization: "General Physician",
-//             contact: "345-678-9012",
-//             profileImage: "" // Add path if you have an image
-//         },
-//         {
-//             name: "Dr. Michael Brown",
-//             location: "Houston",
-//             specialization: "Pediatrician",
-//             contact: "456-789-0123",
-//             profileImage: "" // Add path if you have an image
-//         }
-//     ];
-
-//     try {
-//         await Doctor.insertMany(doctors);
-//         res.status(201).json({ status: "success", message: "Sample doctors inserted successfully" });
-//     } catch (error) {
-//         console.error("Error inserting sample doctors:", error);
-//         res.status(500).json({ status: "fail", message: "Error inserting sample doctors", error: error.message });
-//     }
-// });
 
 // time slot of appointment
 
