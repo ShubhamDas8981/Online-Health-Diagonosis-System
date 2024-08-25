@@ -1,0 +1,104 @@
+body, html, #root {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif; 
+  background: linear-gradient(to bottom, #77E4C8, #36C2CE, #4535C1) !important;
+  overflow-x: hidden;
+}
+
+.health-checkup {
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.header {
+  background-color: #61dafb;
+  padding: 20px;
+  color: white;
+}
+
+.assessments-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  background-color: blue;
+}
+
+.card {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card-content {
+  text-align: left;
+}
+
+.take-assessment-button {
+  background-color:teal;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* .take-assessment-button:hover {
+  background-color: #21a1f1;
+} */
+.healthRecord{
+  margin-top: 15px;
+  margin-left: 50px;
+  margin-right: 100px;
+ }
+
+ .custom-card {
+  border: none;
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px;
+  height: 300px; /* Adjust as necessary to match the size */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width:300px;
+  background-color: hwb(0 93% 4%);
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+.custom-card:hover {
+  transform: translateY(-10px);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset;
+}
+
+.card-body {
+  text-align: center;
+}
+
+.icon {
+  width: 20%; /* Adjust size as necessary */
+  margin-bottom: 10px;
+  height: 50px !important;
+}
+
+.card-title {
+  font-size: 20px; /* Adjust font size as necessary */
+  font-weight: bold;
+
+}
+
+.card-text {
+  font-size: 14px; /* Adjust font size as necessary */
+  color: hwb(216 26% 44%); /* Adjust text color as necessary */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
