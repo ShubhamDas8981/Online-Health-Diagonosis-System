@@ -53,15 +53,14 @@ The system includes AI-powered health assessments for:
 ## Technology Stack
 
 ### Frontend
-- **React.js**: Dynamic UI creation.
-- **HTML, CSS, JavaScript**: Frontend structure and styling.
+- **React.js**: Dynamic UI creation.Frontend structure and styling.
 
 ### Backend
 - **Node.js & Express.js**: Server-side logic and API routing.
 - **Python**: For machine learning integrations.
 
 ### Database
-- **MongoDB**: NoSQL database to manage user profiles, doctor details, appointments, and medical records.
+- **MongoDB**: NoSQL database to manage user profiles, doctor details, appointments, and health records.
 
 ### APIs
 - **REST APIs & FastAPI**: For communication between frontend and backend.
