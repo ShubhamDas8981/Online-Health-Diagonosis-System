@@ -1,5 +1,5 @@
 # Online Health Diagnosis System
-  ![DFD](Snap.png)
+  ![Snap](Snap.PNG)
 ## Project Description
 The **Online Health Diagnosis System** is a comprehensive digital healthcare platform designed to offer a secure, user-friendly, and accessible means of managing health profiles and receiving health diagnoses online. The system enables users to book appointments, communicate with doctors, store medical records, perform AI-driven symptom assessments, and generate health cards for sharing vital health information during emergencies. This project emphasizes security, data privacy, and the convenience of users while integrating modern technology into healthcare management.
 
