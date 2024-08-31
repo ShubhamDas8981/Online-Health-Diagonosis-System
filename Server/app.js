@@ -23,11 +23,11 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 // Configure nodemailer for Amazon SES
 const transporter = nodemailer.createTransport({
-    host: 'email-smtp.eu-west-1.amazonaws.com', // Replace with your SES SMTP endpoint email-smtp.ap-south-1.amazonaws.com
+    host: '', 
     port: 587,
     auth: {
-        user: '',//YOUR_SES_SMTP_USERNAME AKIA47CRWFW7GNF22MUR
-        pass: ''//YOUR_SES_SMTP_PASSWORD BL339Z/wgj3XLq8eruawidW2/kL61ijghe7aZAW9mwSl
+        user: '',
+        pass: ''
     }
 });
 
@@ -228,7 +228,7 @@ app.post("/send-otp", async (req, res) => {
         otpStore[email] = { otp, expires: Date.now() + 600000 }; // OTP valid for 10 minutes
 
         const mailOptions = {
-            from: 'noreply@medicowebsite.awsapps.com',
+            from: '',
             to: email,
             subject: "Password Reset OTP",
             text: `Your OTP is ${otp}. It will expire in 10 minutes.`
