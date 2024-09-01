@@ -1,5 +1,5 @@
 # Online Health Diagnosis System
-
+  ![Snap](Snap.PNG)
 ## Project Description
 The **Online Health Diagnosis System** is a comprehensive digital healthcare platform designed to offer a secure, user-friendly, and accessible means of managing health profiles and receiving health diagnoses online. The system enables users to book appointments, communicate with doctors, store medical records, perform AI-driven symptom assessments, and generate health cards for sharing vital health information during emergencies. This project emphasizes security, data privacy, and the convenience of users while integrating modern technology into healthcare management.
 
@@ -95,6 +95,59 @@ The system includes AI-powered health assessments for:
   - **Dataset:** [Kaggle - COVID-19 Symptoms Checker](https://www.kaggle.com/datasets/iamhungundji/covid19-symptoms-checker)
 
 ---
+## Data Flow Diagram of Application & Schema Diagram of Database 
+ ![DFD](DFD.png)
+
+ ![Database Schema](Schema.png)
+## Installation
+* Clone the repository:
+  ```bash
+  git clone https://github.com/ShubhamDas8981/Online-Health-Diagonosis-System.git
+  ```
+* Install dependencies (Client):
+  ```bash
+  # Enter the client folder
+  cd client
+  # Install dependencies
+  npm install
+  ```
+* Install dependencies (Server):
+  ```bash
+  # Enter the server folder
+  cd server
+  # Install dependencies
+  npm install
+  ```
+* Connect with your database (mongo.js):
+  ```bash
+  # Connect to your MongoDB database(line no:3)
+  mongoose.connect(`mongodb+srv://<username>:<password>@cluster0.szp9swg.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`)
+  ```
+* Configure NodeMailer for Mail Services (app.js):
+  ```bash
+  const transporter = nodemailer.createTransport({
+    host: '',
+    port: 587,
+    auth: {
+        user: '',
+        pass: ''
+    }
+  });
+  ```
+* Configure the otp services (app.js /send-otp):
+  ```bash
+  # line 230
+    const mailOptions = {
+            from: '',
+            to: email,
+            subject: "Password Reset OTP",
+            text: `Your OTP is ${otp}. It will expire in 10 minutes.`
+        }
+  ``` 
+* Run the code (Client & Server):
+  ```bash
+  npm start
+  ```
 
 ## Future Scope
 - **Health Device Integration:** Connect and integrate health devices using APIs to gather real-time health data.
